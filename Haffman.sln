@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haffman.UI", "Haffman.UI\Haffman.UI.csproj", "{4A55C29B-B85F-4F14-9B6E-F65C38AF0FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haffman.BL", "Haffman.BL\Haffman.BL.csproj", "{715E1621-0584-4C54-9265-99DA9371C5A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A55C29B-B85F-4F14-9B6E-F65C38AF0FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A55C29B-B85F-4F14-9B6E-F65C38AF0FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A55C29B-B85F-4F14-9B6E-F65C38AF0FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A55C29B-B85F-4F14-9B6E-F65C38AF0FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{715E1621-0584-4C54-9265-99DA9371C5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{715E1621-0584-4C54-9265-99DA9371C5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{715E1621-0584-4C54-9265-99DA9371C5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{715E1621-0584-4C54-9265-99DA9371C5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {209B37B6-B7E0-42D2-8F5D-09164CD68975}
+	EndGlobalSection
+EndGlobal
