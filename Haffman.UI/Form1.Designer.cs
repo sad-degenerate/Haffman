@@ -31,6 +31,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.rtbxText = new System.Windows.Forms.RichTextBox();
             this.rtbxResult = new System.Windows.Forms.RichTextBox();
+            this.rtbxAlph = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnStart
@@ -53,20 +54,32 @@
             // 
             // rtbxResult
             // 
+            this.rtbxResult.Enabled = false;
             this.rtbxResult.Location = new System.Drawing.Point(12, 185);
             this.rtbxResult.Name = "rtbxResult";
             this.rtbxResult.Size = new System.Drawing.Size(288, 167);
             this.rtbxResult.TabIndex = 2;
             this.rtbxResult.Text = "";
             // 
+            // rtbxAlph
+            // 
+            this.rtbxAlph.Enabled = false;
+            this.rtbxAlph.Location = new System.Drawing.Point(306, 12);
+            this.rtbxAlph.Name = "rtbxAlph";
+            this.rtbxAlph.Size = new System.Drawing.Size(231, 409);
+            this.rtbxAlph.TabIndex = 3;
+            this.rtbxAlph.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 433);
+            this.ClientSize = new System.Drawing.Size(552, 433);
+            this.Controls.Add(this.rtbxAlph);
             this.Controls.Add(this.rtbxResult);
             this.Controls.Add(this.rtbxText);
             this.Controls.Add(this.btnStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Haffman";
             this.ResumeLayout(false);
@@ -78,6 +91,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.RichTextBox rtbxText;
         private System.Windows.Forms.RichTextBox rtbxResult;
+        private System.Windows.Forms.RichTextBox rtbxAlph;
     }
 }
 

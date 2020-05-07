@@ -6,11 +6,11 @@ namespace Haffman.BL
 {
     public class Tree
     {
-        public string Text { get; set; }
-        Dictionary<char, int> FrequencyAlph { get; set; }
-        List<Node> Source { get; set; }
-        List<Node> NewAlph { get; set; }
-        List<Node> _Tree { get; set; }
+        public string Text { get; }
+        Dictionary<char, int> FrequencyAlph { get; }
+        List<Node> Source { get; }
+        List<Node> ResTree { get; }
+        List<Node> tree { get; }
 
         public Tree(string text)
         {
@@ -21,11 +21,11 @@ namespace Haffman.BL
 
             FrequencyAlph = new Dictionary<char, int>();
             Source = new List<Node>();
-            NewAlph = new List<Node>();
-            _Tree = new List<Node>();
+            ResTree = new List<Node>();
+            tree = new List<Node>();
         }
 
-        public string Start()
+        public (string, string) Start()
         {
             for(int i = 0; i < Text.Length; i++)
             {
@@ -38,46 +38,50 @@ namespace Haffman.BL
             foreach(var pair in FrequencyAlph)
             {
                 Source.Add(new Node(pair.Key.ToString(), "", pair.Value));
-                NewAlph.Add(new Node(pair.Key.ToString(), "", pair.Value));
-                _Tree.Add(new Node(pair.Key.ToString(), "", pair.Value));
+                ResTree.Add(new Node(pair.Key.ToString(), "", pair.Value));
+                tree.Add(new Node(pair.Key.ToString(), "", pair.Value));
             }
 
-            while(_Tree.Count > 1)
+            while(tree.Count > 1)
             {
                 SortTree();
 
                 for(int i = 0; i < Source.Count; i++)
                 {
-                    if (_Tree[_Tree.Count - 2].Text.Contains(Source[i].Text))
-                        NewAlph[i] = new Node(NewAlph[i].Text, "0" + NewAlph[i].Code, NewAlph[i].Frequency);
-                    else if (_Tree[_Tree.Count - 1].Text.Contains(Source[i].Text))
-                        NewAlph[i] = new Node(NewAlph[i].Text, "1" + NewAlph[i].Code, NewAlph[i].Frequency);
+                    if (tree[tree.Count - 2].Text.Contains(Source[i].Text))
+                        ResTree[i] = new Node(ResTree[i].Text, "0" + ResTree[i].Code, ResTree[i].Frequency);
+                    else if (tree[tree.Count - 1].Text.Contains(Source[i].Text))
+                        ResTree[i] = new Node(ResTree[i].Text, "1" + ResTree[i].Code, ResTree[i].Frequency);
                 }
 
-                _Tree[_Tree.Count - 2] = new Node(_Tree[_Tree.Count - 2].Text + _Tree[_Tree.Count - 1].Text, "",
-                    _Tree[_Tree.Count - 2].Frequency + _Tree[_Tree.Count - 1].Frequency);
-                _Tree.RemoveAt(_Tree.Count - 1);
+                tree[tree.Count - 2] = new Node(tree[tree.Count - 2].Text + tree[tree.Count - 1].Text, "",
+                    tree[tree.Count - 2].Frequency + tree[tree.Count - 1].Frequency);
+                tree.RemoveAt(tree.Count - 1);
             }
+
+            var alph = "";
+            for (int i = 0; i < Source.Count; i++)
+                alph += $"{ResTree[i].Text} ({ResTree[i].Code})\n";
 
             var res = "";
 
             for (int i = 0; i < Text.Length; i++)
-                foreach (var node in NewAlph)
+                foreach (var node in ResTree)
                     if (node.Text == Text[i].ToString())
                         res += node.Code;
 
-            return res;
+            return (res, alph);
         }
 
         private void SortTree()
         {
-            for (int i = 0; i < _Tree.Count - 1; i++)
-                for (int j = i; j < _Tree.Count; j++)
-                    if (_Tree[i].Frequency < _Tree[j].Frequency)
+            for (int i = 0; i < tree.Count - 1; i++)
+                for (int j = i; j < tree.Count; j++)
+                    if (tree[i].Frequency < tree[j].Frequency)
                     {
-                        var buff = _Tree[i];
-                        _Tree[i] = _Tree[j];
-                        _Tree[j] = buff;
+                        var buff = tree[i];
+                        tree[i] = tree[j];
+                        tree[j] = buff;
                     }
         }
     }
